@@ -4,21 +4,21 @@ import java.util.*;
 
 class Client {
 	public static void main(String[] args){
-		//System.out.println("Enter server's IP addr and port in the form of <IP>:<port>");
+		System.out.println("Enter server's IP addr and port in the form of <IP>:<port>");
 		Scanner scanner = null;
-		// String[] tokens = null;
+		String[] tokens = null;
 		Socket servSock = null;
 		DataInputStream in = null;
 		DataOutputStream out = null;
 		try{
 			scanner = new Scanner(System.in);
-			// tokens = scanner.nextLine().split(":");
-			// String host = tokens[0];
-			// int port = Integer.parseInt(tokens[1]);
+			tokens = scanner.nextLine().split(":");
+			String host = tokens[0];
+			int port = Integer.parseInt(tokens[1]);
 
-            // InetAddress addr = InetAddress.getByName(host);
-            InetAddress addr = InetAddress.getByName("127.0.0.1");
-            int port = 4000;
+            InetAddress addr = InetAddress.getByName(host);
+            //InetAddress addr = InetAddress.getByName("127.0.0.1");
+            //int port = 4000;
 			servSock = new Socket(addr, port);
 
 			out = new DataOutputStream(servSock.getOutputStream());

@@ -11,6 +11,7 @@ class Server {
         try {
             ServerSocket servSock = new ServerSocket(PORT);
             servSock.setReuseAddress(true);
+            System.out.println("Server listen at port 4000");
             while (true) {
                 Socket conn = servSock.accept();
                 DataInputStream dis = new DataInputStream(conn.getInputStream());
@@ -20,7 +21,6 @@ class Server {
                 InetAddress addr = conn.getInetAddress();
                 int port = conn.getPort();
                 System.out.println("Connecttion from client:" + addr.toString() + ":" + port);
-                System.out.println(numClient);
                 ar.add(clientHandler);
                 clientHandler.start();
                 if (numClient == 3) {
