@@ -29,14 +29,14 @@ public class Client{
 
 			while (true){
 				// System.out.println("Enter your choice: ");
-				System.out.println("1: Download file updated from server");
-				System.out.println("@logout: for exit and close connection");
-				System.out.println("---------------------------------------");
-				String c = scanner.nextLine();
-				out.writeUTF(c);
-				out.flush();
+				// System.out.println("1: Download file updated from server");
+				// System.out.println("@logout: for exit and close connection");
+				// System.out.println("---------------------------------------");
+				// String c = scanner.nextLine();
+				// out.writeUTF(c);
+				// out.flush();
 				String s = null;
-				if (c.equals("1")) {
+				// if (c.equals("1")) {
                     String filename = in.readUTF();
 					//read filesize
 					s = in.readUTF();
@@ -71,16 +71,16 @@ public class Client{
                     System.out.printf("downloading '%s' done\n", filename);
                     out.writeUTF("done");
 					fos.close();
-				}
+			// 	}
 				
-				else if (c.equals("@logout")) {
-                    System.out.println("logout!");
-					break;
-				}
+			// 	else if (c.equals("@logout")) {
+            //         System.out.println("logout!");
+			// 		break;
+			// 	}
 				
-			}
-			servSock.close();
-			scanner.close();
+			 }
+			// servSock.close();
+			// scanner.close();
 		} catch (IOException ex){
 			ex.printStackTrace();
 			System.exit(-1);

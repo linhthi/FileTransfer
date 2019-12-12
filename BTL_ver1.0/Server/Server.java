@@ -2,13 +2,13 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-class SocketThread extends Thread {
+class ClientHandler extends Thread {
     private Socket conn; // Socket connect server with client
     private static final int BUFSIZE = 4096; // buffer size
     public static int totalFiledown = 0;
     public String fileName; 
     // Constructor
-    public SocketThread(Socket conn, String fileName) {
+    public ClientHandler(Socket conn, String fileName) {
         this.conn = conn;
         this.fileName = fileName;
     }
@@ -108,9 +108,15 @@ class Server {
                     System.out.println("Enter filename:");
                     String fileName = scanner.nextLine();
                     fileName.trim();
-                    Socket conn = servSock.accept();
-                    SocketThread st = new SocketThread(conn, fileName);
-                    st.start();    
+                    int numClient = 0;
+                    while(numClient < 3) {
+                        Socket conn = servSock.accept();
+                        ClientHandler st = new ClientHandler(conn, fileName);
+                        numClient++;
+                        System.out.println(numClient);
+                        st.start(); 
+                    }
+   
                 }
                 else if (cmd.equals("3")) {
 
