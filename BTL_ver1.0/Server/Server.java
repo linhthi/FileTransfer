@@ -157,8 +157,9 @@ class ClientHandler extends Thread {
                         if (fileError) ;
                         System.out.println("Sending file done!");
                         end = System.currentTimeMillis();
-                        totalTime = (end - start);
+                        totalTime = totalTime + (end - start);
                         System.out.println("Total time: " + totalTime + " ms");
+                        totalTime = 0;
                         increaseCount();
                     }
 
